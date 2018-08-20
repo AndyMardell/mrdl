@@ -18,3 +18,9 @@ vendor/*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# wordpress
+wp-config.php
+admin/*
+!admin/wp-content/themes/mardellme
+!admin/wp-content/uploads

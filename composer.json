@@ -8,11 +8,25 @@
             "email": "andy@mardell.me"
         }
     ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
     "require": {
-        "php": ">=5.4",
-        "johnpbloch/wordpress": "4.2"
+        "johnpbloch/wordpress": "4.9.8",
+        "wpackagist-plugin/gutenberg": "3.6.2"
     },
     "extra": {
-        "wordpress-install-dir": "admin"
+        "wordpress-install-dir": "admin",
+        "installer-paths": {
+            "admin/wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "admin/wp-content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        }
     }
 }
