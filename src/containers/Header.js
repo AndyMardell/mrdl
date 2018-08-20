@@ -8,7 +8,7 @@ const Navbar = Styled.div`
   justify-content: space-between;
 `
 
-class Header extends Component {
+class HeaderContainer extends Component {
   render () {
     return (
       <Navbar>
@@ -19,4 +19,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default HeaderContainer

@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import Wrapper from '../components/Wrapper'
-import Header from './Header'
+import HeaderContainer from './Header'
 import Hero from '../components/Hero'
-import Posts from './Posts'
+import PostsContainer from './Posts'
 
 class App extends Component {
   render () {
     return (
       <Wrapper>
-        <Header />
+        <HeaderContainer />
         <Hero />
-        <Posts />
+        <PostsContainer />
       </Wrapper>
     )
   }

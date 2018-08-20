@@ -12,9 +12,10 @@ class PostsContainer extends Component {
         dispatchUpdatePosts(response)
       })
   }
+
   render () {
     const {posts} = this.props
-    console.log(posts)
+    console.log(posts) // tmp
     if (!posts) return null // loading
     return (
       <Posts posts={posts} />
