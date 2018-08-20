@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="102px" height="46px" viewBox="0 0 102 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-154.000000, -152.000000)">
+            <g id="header" transform="translate(154.000000, 152.000000)">
+                <g id="Group">
+                    <g id="Group-Copy" transform="translate(24.000000, 11.000000)" fill="#232323" font-family="RobotoMono-Regular, Roboto Mono" font-size="22" font-weight="normal">
+                        <text id="mrdl" letter-spacing="-1.08865952">
+                            <tspan x="0.54604435" y="20">mrdl</tspan>
+                        </text>
+                        <text id=":">
+                            <tspan x="46.7978516" y="20">:</tspan>
+                        </text>
+                    </g>
+                    <rect id="Rectangle" stroke="#232323" stroke-width="2" x="1" y="1" width="100" height="44"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
