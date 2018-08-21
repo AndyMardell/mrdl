@@ -5,6 +5,7 @@ import Styled from 'styled-components'
 const PostsWrapper = Styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
+  grid-gap: 50px;
 `
 
 const Posts = ({posts}) => {

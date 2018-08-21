@@ -4,14 +4,6 @@ import PostContent from './PostContent'
 import Styled from 'styled-components'
 
 const PostWrapper = Styled.div`
-  margin: 40px;
-
-  &:nth-child(3n+1) {
-    margin-left: 0;
-  }
-  &:nth-child(3n) {
-    margin-right: 0;
-  }
 `
 
 const Post = ({data}) => (
