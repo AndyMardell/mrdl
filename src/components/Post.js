@@ -7,9 +7,9 @@ import Styled from 'styled-components'
 const PostWrapper = Styled.div`
 `
 
-const Post = ({data}) => (
+const Post = ({data, categories}) => (
   <PostWrapper>
-    <PostCategory content={data.categories} />
+    <PostCategory content={categories} />
     <PostTitle content={data.title.rendered} />
     <PostContent content={data.excerpt.rendered} />
   </PostWrapper>
