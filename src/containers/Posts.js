@@ -1,15 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updatePostsAction } from '../actions'
+import { updatePostsAction, updateCategoriesAction } from '../actions'
 import Posts from '../components/Posts'
 
 class PostsContainer extends Component {
   componentDidMount () {
-    const {dispatchUpdatePosts} = this.props
+    const {dispatchUpdatePosts, dispatchUpdateCategories} = this.props
+
     fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/posts')
       .then(response => response.json())
       .then(response => {
         dispatchUpdatePosts(response)
+      })
+
+    fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/categories')
+      .then(response => response.json())
+      .then(response => {
+        dispatchUpdateCategories(response)
       })
   }
 
@@ -25,13 +32,15 @@ class PostsContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.cms.posts
+    posts: state.cms.posts,
+    categories: state.cms.categories
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchUpdatePosts: (posts) => dispatch(updatePostsAction(posts))
+    dispatchUpdatePosts: (posts) => dispatch(updatePostsAction(posts)),
+    dispatchUpdateCategories: (categories) => dispatch(updateCategoriesAction(categories))
   }
 }
 

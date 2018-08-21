@@ -4,3 +4,10 @@ export const updatePostsAction = (posts) => {
     value: posts
   }
 }
+
+export const updateCategoriesAction = (categories) => {
+  return {
+    type: 'update_categories',
+    value: categories
+  }
+}
