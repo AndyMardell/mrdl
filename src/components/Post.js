@@ -11,7 +11,7 @@ const PostWrapper = Styled.div`
 const Post = ({data, categories}) => (
   <PostWrapper>
     <PostCategory content={categories} />
-    <PostTitle content={data.title.rendered} />
+    <PostTitle content={data.title.rendered} slug={data.slug} />
     <PostContent content={data.excerpt.rendered} />
     <PostMore slug={data.slug} />
   </PostWrapper>

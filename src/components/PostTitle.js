@@ -7,8 +7,25 @@ const Heading = Styled.h3`
   margin-top: 0.5em;
 `
 
-const PostTitle = ({content}) => (
-  <Heading>{content}</Heading>
-)
+const Link = Styled.a`
+  color: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    background: #000;
+    color: #fff;
+  }
+`
+
+const PostTitle = ({content, slug}) => {
+  const url = '/post/' + slug
+
+  return (
+    <Heading>
+      <Link href={url}>{content}</Link>
+    </Heading>
+  )
+}
 
 export default PostTitle
