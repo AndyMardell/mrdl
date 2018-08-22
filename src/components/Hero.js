@@ -12,7 +12,7 @@ const Container = Styled.div`
 
 const Hero = () => (
   <Container>
-    Notes and stuff of a <br />developer from <strong>Portsmouth</strong>
+    undefined
   </Container>
 )
 

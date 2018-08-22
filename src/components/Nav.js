@@ -4,6 +4,7 @@ import burger from '../burger.svg'
 
 const Link = Styled.a`
   padding: 11px;
+  height: 24px;
 `
 
 const Nav = () => (
