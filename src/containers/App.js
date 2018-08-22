@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
-import Wrapper from '../components/Wrapper'
-import HeaderContainer from './Header'
-import Hero from '../components/Hero'
-import PostsContainer from './Posts'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import HomeContainer from './Home'
+import PostContainer from './PostSingle'
 
 class App extends Component {
   render () {
+    const homeComponent = () => <HomeContainer />
+    const postComponent = ({ match }) => <PostContainer slug={match.params.postslug} />
+
     return (
-      <Wrapper>
-        <HeaderContainer />
-        <Hero />
-        <PostsContainer />
-      </Wrapper>
+      <Router>
+        <div>
+          <Route exact path='/' component={homeComponent} />
+          <Route exact path='/post/:postslug' component={postComponent} />
+        </div>
+      </Router>
     )
   }
 }
