@@ -2,14 +2,15 @@ import React from 'react'
 import Styled from 'styled-components'
 
 const CatWrapper = Styled.div`
-
+  margin-left: 1px;
 `
 
 const Category = Styled.span`
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 13px;
+  font-size: 0.8em;
   font-weight: bold;
+  margin-right: 5px;
 `
 
 const PostCategory = ({content}) => {

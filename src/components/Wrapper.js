@@ -3,10 +3,14 @@ import Styled from 'styled-components'
 
 const Container = Styled.div`
   background: #fff;
-  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.1);
-  border-top: 3px solid #232323;
-  padding: 5%;
-  margin: 5%;
+  border-top: 5px solid #232323;
+  padding: 20px;
+
+  @media only screen and (min-width: 768px) {
+    padding: 50px;
+    margin: 50px 50px 60px;
+    box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.1);
+  }
 `
 
 class Wrapper extends Component {
