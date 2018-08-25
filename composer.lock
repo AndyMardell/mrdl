@@ -4,8 +4,39 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6625418afeda7081d310b0d5b9b63f0",
+    "content-hash": "cef3285394691396a5530aefb5ce097a",
     "packages": [
+        {
+            "name": "andymardell/mrdl-headless",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AndyMardell/mrdl-headless.git",
+                "reference": "81bb0cd6d02d2bf41c85b7fd1cd5da28bf814a9f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AndyMardell/mrdl-headless/zipball/81bb0cd6d02d2bf41c85b7fd1cd5da28bf814a9f",
+                "reference": "81bb0cd6d02d2bf41c85b7fd1cd5da28bf814a9f",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "*"
+            },
+            "type": "wordpress-theme",
+            "authors": [
+                {
+                    "name": "Andy Mardell",
+                    "email": "andy@mardell.me"
+                }
+            ],
+            "description": "mrdl headless theme",
+            "support": {
+                "source": "https://github.com/AndyMardell/mrdl-headless/tree/1.0",
+                "issues": "https://github.com/AndyMardell/mrdl-headless/issues"
+            },
+            "time": "2018-08-25T15:30:58+00:00"
+        },
         {
             "name": "composer/installers",
             "version": "v1.5.0",

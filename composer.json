@@ -12,12 +12,17 @@
         {
             "type": "composer",
             "url": "https://wpackagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:AndyMardell/mrdl-headless.git"
         }
     ],
     "require": {
         "johnpbloch/wordpress": "4.9.8",
         "wpackagist-plugin/gutenberg": "3.6.2",
-        "wpackagist-plugin/fakerpress": "0.4.11"
+        "wpackagist-plugin/fakerpress": "0.4.11",
+        "andymardell/mrdl-headless": "1.0"
     },
     "extra": {
         "wordpress-install-dir": "admin",
