@@ -31,8 +31,6 @@ class PostSingle extends Component {
 
   // TODO: DRY
   getCategories (ids) {
-    console.log(this.props.categories)
-
     const {categories} = this.props
     const arr = []
 
@@ -55,8 +53,6 @@ class PostSingle extends Component {
     const { post } = this.state
 
     if (!post) return null // TODO: Loading
-
-    console.log(post)
 
     return (
       <Post data={post} categories={this.getCategories(post.categories)} single />

@@ -1,10 +1,17 @@
 import React from 'react'
 import Styled from 'styled-components'
 
-const Heading = Styled.h3`
-  font-size: 1.4em;
+const Heading1 = Styled.h1`
+  font-size: 2em;
   line-height: 1.5;
-  margin-top: 0.5em;
+  margin-top: 0;
+`
+
+const Heading3 = Styled.h3`
+  font-size: 1.4em;
+  line-height: 1.4;
+  margin-top: 0.2em;
+  margin-bottom: 0;
 `
 
 const Link = Styled.a`
@@ -18,13 +25,14 @@ const Link = Styled.a`
   }
 `
 
-const PostTitle = ({content, slug}) => {
+const PostTitle = ({content, slug, single}) => {
   const url = '/post/' + slug
+  const linkComponent = <Link href={url}>{content}</Link>
 
   return (
-    <Heading>
-      <Link href={url}>{content}</Link>
-    </Heading>
+    <div>
+      {single ? <Heading1>{content}</Heading1> : <Heading3>{linkComponent}</Heading3>}
+    </div>
   )
 }
 

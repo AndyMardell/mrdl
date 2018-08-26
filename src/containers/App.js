@@ -6,6 +6,7 @@ import Wrapper from '../components/Wrapper'
 import Header from './Header'
 import HomeContainer from './Home'
 import PostContainer from './PostSingle'
+import Footer from './Footer'
 
 class App extends Component {
   componentDidMount () {
@@ -29,15 +30,18 @@ class App extends Component {
     const postComponent = ({ match }) => <PostContainer slug={match.params.postslug} />
 
     return (
-      <Wrapper>
-        <Header />
-        <Router>
-          <div>
-            <Route exact path='/' component={homeComponent} />
-            <Route exact path='/post/:postslug' component={postComponent} />
-          </div>
-        </Router>
-      </Wrapper>
+      <div>
+        <Wrapper>
+          <Header />
+          <Router>
+            <div>
+              <Route exact path='/' component={homeComponent} />
+              <Route exact path='/post/:postslug' component={postComponent} />
+            </div>
+          </Router>
+        </Wrapper>
+        <Footer />
+      </div>
     )
   }
 }

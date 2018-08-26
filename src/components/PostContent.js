@@ -1,10 +1,18 @@
 import React from 'react'
 import Parser from 'html-react-parser'
+import Styled from 'styled-components'
+
+const Content = Styled.div`
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+`
 
 const PostContent = ({content}) => (
-  <div>
+  <Content>
     {Parser(content)}
-  </div>
+  </Content>
 )
 
 export default PostContent

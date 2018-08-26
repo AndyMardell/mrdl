@@ -10,11 +10,12 @@ const PostWrapper = Styled.div`
 
 const Post = ({data, categories, single}) => {
   const content = single ? data.content.rendered : data.excerpt.rendered
+  const className = single ? 'post-single narrow padding-top-small padding-bottom-small' : 'post-archive'
 
   return (
-    <PostWrapper>
+    <PostWrapper className={className}>
       <PostCategory content={categories} />
-      <PostTitle content={data.title.rendered} slug={data.slug} />
+      <PostTitle content={data.title.rendered} slug={data.slug} single={single} />
       <PostContent content={content} />
       {!single &&
         <PostMore slug={data.slug} />
