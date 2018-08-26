@@ -43,8 +43,10 @@ npm start
 
 ## Deployment
 
+Make sure you have built the app for production:
+
 ```bash
-npm run build
+npm run build --production
 ```
 
 admin.domain.com should point to /admin
