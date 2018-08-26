@@ -2,6 +2,22 @@
 
 A react frontend for the WordPress REST API
 
+## Preperation
+
+Nothing like being prepared. 2 things:
+
+```bash
+cp env.dist .env
+```
+
+and change the domain to where your WordPress installation will live.
+
+```bash
+cp wp-config.dist.php wp-config.php
+```
+
+and fill in the appropriate MySql details.
+
 ## Installing
 
 Install WordPress using composer
