@@ -10,7 +10,7 @@ Nothing like being prepared. 2 things:
 cp env.dist .env
 ```
 
-and change the domain to where your WordPress installation will live.
+and change the domain to where your WordPress installation will live (e.g. admin.domain.com).
 
 ```bash
 cp wp-config.dist.php wp-config.php
@@ -42,6 +42,10 @@ npm start
 ```
 
 ## Deployment
+
+```bash
+npm run build
+```
 
 admin.domain.com should point to /admin
 domain.com should point to /build
