@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Post from '../components/Post'
+import { getPost, getCategories } from '../helpers'
 
 class PostSingle extends Component {
   constructor (props) {
@@ -14,13 +15,12 @@ class PostSingle extends Component {
   componentDidMount () {
     const { slug } = this.props
 
-    fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/posts?slug=' + slug)
-      .then(response => response.json())
+    getPost(slug)
       .then(response => {
-        if (!response.length) return false // TODO: 404
+        if (!response) return false // TODO: 404
 
         !this.isCancelled && this.setState({
-          post: response[0]
+          post: response
         })
       })
   }
@@ -29,33 +29,13 @@ class PostSingle extends Component {
     this.isCancelled = true
   }
 
-  // TODO: DRY
-  getCategories (ids) {
-    const {categories} = this.props
-    const arr = []
-
-    for (let id of ids) {
-      for (let category of categories) {
-        if (id === category.id) {
-          arr.push({
-            id: category.id,
-            name: category.name,
-            slug: category.slug
-          })
-        }
-      }
-    }
-
-    return arr
-  }
-
   render () {
     const { post } = this.state
 
     if (!post) return null // TODO: Loading
 
     return (
-      <Post data={post} categories={this.getCategories(post.categories)} single />
+      <Post data={post} categories={getCategories(post.categories, this.props.categories)} single />
     )
   }
 }

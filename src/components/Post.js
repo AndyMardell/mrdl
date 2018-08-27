@@ -17,9 +17,7 @@ const Post = ({data, categories, single}) => {
       <PostCategory content={categories} />
       <PostTitle content={data.title.rendered} slug={data.slug} single={single} />
       <PostContent content={content} />
-      {!single &&
-        <PostMore slug={data.slug} />
-      }
+      {!single && <PostMore slug={data.slug} /> }
     </PostWrapper>
   )
 }

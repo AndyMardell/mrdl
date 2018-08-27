@@ -8,7 +8,7 @@ const Container = Styled.div`
 
   @media only screen and (min-width: 768px) {
     padding: 60px;
-    margin: 60px;
+    margin: 50px 60px;
     box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.1);
   }
 `
