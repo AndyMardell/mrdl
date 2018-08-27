@@ -6,7 +6,7 @@ import { faGithub, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-i
 
 const Container = Styled.div`
   text-align: center;
-  font-size: 1.8em;
+  font-size: 1.3em;
   margin-bottom: 60px;
 `
 
