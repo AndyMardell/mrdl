@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Styled from 'styled-components'
 
 const Mrdl = Styled.svg`
@@ -17,7 +18,7 @@ const Mrdl = Styled.svg`
 `
 
 const Logo = () => (
-  <a href='/'>
+  <Link to='/'>
     <Mrdl width='102px' height='46px' viewBox='0 0 102 46' version='1.1' xmlns='http://www.w3.org/2000/svg'>
       <title>Mrdl:</title>
       <desc>Andy Mardell Logo</desc>
@@ -37,7 +38,7 @@ const Logo = () => (
         </g>
       </g>
     </Mrdl>
-  </a>
+  </Link>
 )
 
 export default Logo

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Styled from 'styled-components'
 
 const Heading1 = Styled.h1`
@@ -14,25 +15,27 @@ const Heading3 = Styled.h3`
   margin-bottom: 0;
 `
 
-const Link = Styled.a`
-  color: inherit;
-  text-decoration: none;
-
-  &:hover,
-  &:focus {
-    background: #000;
-    color: #fff;
+const Container = Styled.div`
+  a {
+    color: inherit;
+    text-decoration: none;
+  
+    &:hover,
+    &:focus {
+      background: #000;
+      color: #fff;
+    }
   }
 `
 
 const PostTitle = ({content, slug, single}) => {
   const url = '/post/' + slug
-  const linkComponent = <Link href={url}>{content}</Link>
+  const linkComponent = <Link to={url}>{content}</Link>
 
   return (
-    <div>
+    <Container>
       {single ? <Heading1>{content}</Heading1> : <Heading3>{linkComponent}</Heading3>}
-    </div>
+    </Container>
   )
 }
 
