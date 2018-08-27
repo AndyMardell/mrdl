@@ -18,7 +18,7 @@ class Header extends Component {
   }
 
   toggleMenu (e) {
-    e.preventDefault()
+    if (!e.target.href) e.preventDefault()
     this.setState({
       menu: !this.state.menu
     })

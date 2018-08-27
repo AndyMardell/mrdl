@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { updatePostsAction, updateCategoriesAction } from '../actions'
 import Wrapper from '../components/Wrapper'
 import Header from './Header'
-import HomeContainer from './Home'
-import PostContainer from './PostSingle'
+import Page from './Page'
 import Footer from './Footer'
 
 class App extends Component {
@@ -26,19 +25,11 @@ class App extends Component {
   }
 
   render () {
-    const homeComponent = () => <HomeContainer />
-    const postComponent = ({ match }) => <PostContainer slug={match.params.postslug} />
-
     return (
       <div>
         <Wrapper>
           <Header />
-          <Router>
-            <div>
-              <Route exact path='/' component={homeComponent} />
-              <Route exact path='/post/:postslug' component={postComponent} />
-            </div>
-          </Router>
+          <Page />
         </Wrapper>
         <Footer />
       </div>
@@ -60,7 +51,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(App))

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Styled from 'styled-components'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -56,9 +57,7 @@ const Menu = ({toggleMenu}) => {
     <Container>
       <a className='close' href='#close' onClick={toggleMenu}><FontAwesomeIcon icon='times' /></a>
       <MenuContainer>
-        <a href='/'>Posts</a>
-        <a href='/about'>About</a>
-        <a href='/contact'>Contact</a>
+        <Link to='/' onClick={toggleMenu}>Home</Link>
       </MenuContainer>
     </Container>
   )
