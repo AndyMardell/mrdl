@@ -5,6 +5,13 @@ export const updatePostsAction = (posts) => {
   }
 }
 
+export const updatePagesAction = (pages) => {
+  return {
+    type: 'update_pages',
+    value: pages
+  }
+}
+
 export const updateCategoriesAction = (categories) => {
   return {
     type: 'update_categories',

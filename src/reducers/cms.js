@@ -1,6 +1,7 @@
 const cms = (
   state = {
     posts: [],
+    pages: [],
     categories: []
   }, action) => {
   switch (action.type) {
@@ -8,6 +9,11 @@ const cms = (
       return {
         ...state,
         posts: action.value
+      }
+    case 'update_pages':
+      return {
+        ...state,
+        pages: action.value
       }
     case 'update_categories':
       return {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { updatePostsAction, updateCategoriesAction } from '../actions'
+import { updatePostsAction, updateCategoriesAction, updatePagesAction } from '../actions'
 import Wrapper from '../components/Wrapper'
 import Header from './Header'
 import Footer from './Footer'
@@ -12,12 +12,18 @@ import PageContainer from './Page'
 
 class App extends Component {
   componentDidMount () {
-    const {dispatchUpdatePosts, dispatchUpdateCategories} = this.props
+    const { dispatchUpdatePosts, dispatchUpdateCategories, dispatchUpdatePages } = this.props
 
     fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/posts')
       .then(response => response.json())
       .then(response => {
         dispatchUpdatePosts(response)
+      })
+
+    fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/pages')
+      .then(response => response.json())
+      .then(response => {
+        dispatchUpdatePages(response)
       })
 
     fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/categories')
@@ -58,6 +64,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatchUpdatePosts: (posts) => dispatch(updatePostsAction(posts)),
+    dispatchUpdatePages: (pages) => dispatch(updatePagesAction(pages)),
     dispatchUpdateCategories: (categories) => dispatch(updateCategoriesAction(categories))
   }
 }
