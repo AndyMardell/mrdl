@@ -1,20 +1,43 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom'
-import HomeContainer from './Home'
-import PostContainer from './PostSingle'
+import Loading from '../components/Loading'
+import Page from '../components/Page'
+import { getPage } from '../helpers'
 
-class Page extends Component {
+class PageContainer extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      page: null
+    }
+  }
+
+  componentDidMount () {
+    const { slug } = this.props
+
+    getPage(slug)
+      .then(response => {
+        if (!response) return false // TODO: 404
+
+        !this.isCancelled && this.setState({
+          page: response
+        })
+      })
+  }
+
+  componentWillUnmount () {
+    this.isCancelled = true
+  }
+
   render () {
-    const homeComponent = () => <HomeContainer />
-    const postComponent = ({ match }) => <PostContainer slug={match.params.postslug} />
+    const { page } = this.state
+
+    if (!page) return <Loading />
 
     return (
-      <Switch>
-        <Route exact path='/' component={homeComponent} />
-        <Route exact path='/post/:postslug' component={postComponent} />
-      </Switch>
+      <Page data={page} />
     )
   }
 }
 
-export default Page
+export default PageContainer

@@ -24,3 +24,12 @@ export const getCategories = (ids, categories) => {
 
   return arr
 }
+
+export const getPage = async (slug) => {
+  return fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/pages?slug=' + slug)
+    .then(response => response.json())
+    .then(response => {
+      if (!response.length) return false
+      return response[0]
+    })
+}

@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
+import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { updatePostsAction, updateCategoriesAction } from '../actions'
 import Wrapper from '../components/Wrapper'
 import Header from './Header'
-import Page from './Page'
 import Footer from './Footer'
+import HomeContainer from './Home'
+import PostContainer from './PostSingle'
+import PageContainer from './Page'
 
 class App extends Component {
   componentDidMount () {
@@ -25,11 +28,19 @@ class App extends Component {
   }
 
   render () {
+    const homeComponent = () => <HomeContainer />
+    const postComponent = ({ match }) => <PostContainer slug={match.params.postslug} />
+    const pageComponent = ({ match }) => <PageContainer slug={match.params.pageslug} />
+
     return (
       <div>
         <Wrapper>
           <Header />
-          <Page />
+          <Switch>
+            <Route exact path='/' component={homeComponent} />
+            <Route exact path='/post/:postslug' component={postComponent} />
+            <Route exact path='/:pageslug' component={pageComponent} />
+          </Switch>
         </Wrapper>
         <Footer />
       </div>
