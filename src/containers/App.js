@@ -2,63 +2,38 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {
-  updatePostsAction,
-  updateCategoriesAction,
-  updatePagesAction,
-  updateNavAction
-} from '../actions'
+import { updateAction } from '../actions'
 import Wrapper from '../components/Wrapper'
 import Header from './Header'
 import Footer from './Footer'
 import HomeContainer from './Home'
 import PostContainer from './PostSingle'
 import PageContainer from './Page'
+import { getPosts, getCategories, getPages, getNav } from '../helpers'
 
 class App extends Component {
-  componentDidMount () {
-    const {
-      dispatchUpdatePosts,
-      dispatchUpdateCategories,
-      dispatchUpdatePages,
-      dispatchUpdateNav
-    } = this.props
+  async componentDidMount () {
+    const { dispatchUpdate } = this.props
 
-    fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/posts')
-      .then(response => response.json())
-      .then(response => {
-        dispatchUpdatePosts(response)
-      })
-      .catch(() => {
-        dispatchUpdatePosts([])
-      })
+    let posts = await getPosts()
+    if (posts.ok) {
+      dispatchUpdate('posts', posts.data)
+    }
 
-    fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/pages')
-      .then(response => response.json())
-      .then(response => {
-        dispatchUpdatePages(response)
-      })
-      .catch(() => {
-        dispatchUpdatePages([])
-      })
+    let categories = await getCategories()
+    if (categories.ok) {
+      dispatchUpdate('categories', categories.data)
+    }
 
-    fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/categories')
-      .then(response => response.json())
-      .then(response => {
-        dispatchUpdateCategories(response)
-      })
-      .catch(() => {
-        dispatchUpdateCategories([])
-      })
+    let pages = await getPages()
+    if (pages.ok) {
+      dispatchUpdate('pages', pages.data)
+    }
 
-    fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp-api-menus/v2/menu-locations/main-menu')
-      .then(response => response.json())
-      .then(response => {
-        dispatchUpdateNav(response)
-      })
-      .catch(() => {
-        dispatchUpdateNav([])
-      })
+    let nav = await getNav()
+    if (nav.ok) {
+      dispatchUpdate('nav', nav.data)
+    }
   }
 
   render () {
@@ -91,10 +66,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchUpdatePosts: (posts) => dispatch(updatePostsAction(posts)),
-    dispatchUpdatePages: (pages) => dispatch(updatePagesAction(pages)),
-    dispatchUpdateCategories: (categories) => dispatch(updateCategoriesAction(categories)),
-    dispatchUpdateNav: (nav) => dispatch(updateNavAction(nav))
+    dispatchUpdate: (type, data) => dispatch(updateAction(type, data))
   }
 }
 

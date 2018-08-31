@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Loading from '../components/Loading'
 import Post from '../components/Post'
-import { getPost, getCategories } from '../helpers'
+import { getPost, getCategoryDetails } from '../helpers'
 
 class PostSingle extends Component {
   constructor (props) {
@@ -36,7 +36,7 @@ class PostSingle extends Component {
     if (!post) return <Loading />
 
     return (
-      <Post data={post} categories={getCategories(post.categories, this.props.categories)} single />
+      <Post data={post} categories={getCategoryDetails(post.categories, this.props.categories)} single />
     )
   }
 }
