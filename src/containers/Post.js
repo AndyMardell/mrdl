@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Loading from '../components/Loading'
 import Page from '../components/Page'
 import Post from '../components/Post'
+import NotFound from '../components/NotFound'
 import { apiGet, getCategoryDetails } from '../helpers'
 
 class PostContainer extends Component {
@@ -40,7 +41,7 @@ class PostContainer extends Component {
     const { data, notfound } = this.state
     const { page, availableCategories } = this.props
 
-    if (notfound) return 'Not found'
+    if (notfound) return <NotFound />
 
     if (!data) return <Loading />
 
