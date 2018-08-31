@@ -7,8 +7,7 @@ import Wrapper from '../components/Wrapper'
 import Header from './Header'
 import Footer from './Footer'
 import HomeContainer from './Home'
-import PostContainer from './PostSingle'
-import PageContainer from './Page'
+import PostContainer from './Post'
 import { apiGet } from '../helpers'
 
 class App extends Component {
@@ -33,7 +32,7 @@ class App extends Component {
   render () {
     const homeComponent = () => <HomeContainer />
     const postComponent = ({ match }) => <PostContainer slug={match.params.postslug} />
-    const pageComponent = ({ match }) => <PageContainer slug={match.params.pageslug} />
+    const pageComponent = ({ match }) => <PostContainer slug={match.params.pageslug} page />
 
     return (
       <div>
