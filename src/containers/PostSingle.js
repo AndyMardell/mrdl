@@ -2,28 +2,31 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Loading from '../components/Loading'
 import Post from '../components/Post'
-import { getPost, getCategoryDetails } from '../helpers'
+import { apiGet, getCategoryDetails } from '../helpers'
 
 class PostSingle extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      post: null
+      post: null,
+      notfound: false
     }
   }
 
-  componentDidMount () {
+  async componentDidMount () {
     const { slug } = this.props
+    let post = await apiGet('posts', slug)
 
-    getPost(slug)
-      .then(response => {
-        if (!response) return false // TODO: 404
-
-        !this.isCancelled && this.setState({
-          post: response
-        })
+    if (!post.ok) {
+      !this.isCancelled && this.setState({
+        notfound: true
       })
+    } else {
+      !this.isCancelled && this.setState({
+        post: post.data[0]
+      })
+    }
   }
 
   componentWillUnmount () {
@@ -31,7 +34,9 @@ class PostSingle extends Component {
   }
 
   render () {
-    const { post } = this.state
+    const { post, notfound } = this.state
+
+    if (notfound) return 'Post not found'
 
     if (!post) return <Loading />
 

@@ -9,30 +9,24 @@ import Footer from './Footer'
 import HomeContainer from './Home'
 import PostContainer from './PostSingle'
 import PageContainer from './Page'
-import { getPosts, getCategories, getPages, getNav } from '../helpers'
+import { apiGet } from '../helpers'
 
 class App extends Component {
   async componentDidMount () {
     const { dispatchUpdate } = this.props
 
-    let posts = await getPosts()
-    if (posts.ok) {
-      dispatchUpdate('posts', posts.data)
-    }
+    let apiDataSets = [
+      'posts',
+      'categories',
+      'pages',
+      'nav'
+    ]
 
-    let categories = await getCategories()
-    if (categories.ok) {
-      dispatchUpdate('categories', categories.data)
-    }
-
-    let pages = await getPages()
-    if (pages.ok) {
-      dispatchUpdate('pages', pages.data)
-    }
-
-    let nav = await getNav()
-    if (nav.ok) {
-      dispatchUpdate('nav', nav.data)
+    for (let key of apiDataSets) {
+      let response = await apiGet(key)
+      if (response.ok) {
+        dispatchUpdate(key, response.data)
+      }
     }
   }
 

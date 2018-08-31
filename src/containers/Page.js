@@ -1,28 +1,31 @@
 import React, { Component } from 'react'
 import Loading from '../components/Loading'
 import Page from '../components/Page'
-import { getPage } from '../helpers'
+import { apiGet } from '../helpers'
 
 class PageContainer extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      page: null
+      page: null,
+      notfound: false
     }
   }
 
-  componentDidMount () {
+  async componentDidMount () {
     const { slug } = this.props
+    let page = await apiGet('pages', slug)
 
-    getPage(slug)
-      .then(response => {
-        if (!response) return false // TODO: 404
-
-        !this.isCancelled && this.setState({
-          page: response
-        })
+    if (!page.ok) {
+      !this.isCancelled && this.setState({
+        notfound: true
       })
+    } else {
+      !this.isCancelled && this.setState({
+        page: page.data[0]
+      })
+    }
   }
 
   componentWillUnmount () {
@@ -30,7 +33,9 @@ class PageContainer extends Component {
   }
 
   render () {
-    const { page } = this.state
+    const { page, notfound } = this.state
+
+    if (notfound) return 'Page not found'
 
     if (!page) return <Loading />
 
