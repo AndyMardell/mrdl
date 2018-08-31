@@ -27,9 +27,16 @@ class Header extends Component {
   }
 
   render () {
-    const { pages } = this.props
+    const { nav, pages } = this.props
 
-    const list = pages.map((page) =>
+    const links = nav.map((page, i) => {
+      let slug = page.url.replace(process.env.REACT_APP_CMS_URL, '')
+      return (
+        <Link key={i} to={slug} onClick={this.toggleMenu.bind(this)}>{page.title}</Link>
+      )
+    })
+
+    const pageLinks = pages.map((page) =>
       <Link key={page.id} to={'/' + page.slug} onClick={this.toggleMenu.bind(this)}>{page.title.rendered}</Link>
     )
 
@@ -37,11 +44,9 @@ class Header extends Component {
       <Navbar>
         <Logo />
         <Nav toggleMenu={this.toggleMenu.bind(this)} />
-
         {this.state.menu &&
           <Menu toggleMenu={this.toggleMenu.bind(this)}>
-            <Link to='/' onClick={this.toggleMenu.bind(this)}>Home</Link>
-            { list }
+            { links.length ? links : pageLinks }
           </Menu>
         }
       </Navbar>
@@ -51,7 +56,8 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    pages: state.cms.pages
+    pages: state.cms.pages,
+    nav: state.cms.nav
   }
 }
 

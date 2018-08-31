@@ -2,6 +2,7 @@ const cms = (
   state = {
     posts: [],
     pages: [],
+    nav: [],
     categories: []
   }, action) => {
   switch (action.type) {
@@ -19,6 +20,11 @@ const cms = (
       return {
         ...state,
         categories: action.value
+      }
+    case 'update_nav':
+      return {
+        ...state,
+        nav: action.value
       }
     default:
       return state

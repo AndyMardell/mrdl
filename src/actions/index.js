@@ -18,3 +18,10 @@ export const updateCategoriesAction = (categories) => {
     value: categories
   }
 }
+
+export const updateNavAction = (nav) => {
+  return {
+    type: 'update_nav',
+    value: nav
+  }
+}

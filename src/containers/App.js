@@ -2,7 +2,12 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { updatePostsAction, updateCategoriesAction, updatePagesAction } from '../actions'
+import {
+  updatePostsAction,
+  updateCategoriesAction,
+  updatePagesAction,
+  updateNavAction
+} from '../actions'
 import Wrapper from '../components/Wrapper'
 import Header from './Header'
 import Footer from './Footer'
@@ -12,12 +17,20 @@ import PageContainer from './Page'
 
 class App extends Component {
   componentDidMount () {
-    const { dispatchUpdatePosts, dispatchUpdateCategories, dispatchUpdatePages } = this.props
+    const {
+      dispatchUpdatePosts,
+      dispatchUpdateCategories,
+      dispatchUpdatePages,
+      dispatchUpdateNav
+    } = this.props
 
     fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/posts')
       .then(response => response.json())
       .then(response => {
         dispatchUpdatePosts(response)
+      })
+      .catch(() => {
+        dispatchUpdatePosts([])
       })
 
     fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/pages')
@@ -25,11 +38,26 @@ class App extends Component {
       .then(response => {
         dispatchUpdatePages(response)
       })
+      .catch(() => {
+        dispatchUpdatePages([])
+      })
 
     fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp/v2/categories')
       .then(response => response.json())
       .then(response => {
         dispatchUpdateCategories(response)
+      })
+      .catch(() => {
+        dispatchUpdateCategories([])
+      })
+
+    fetch(process.env.REACT_APP_CMS_URL + '/wp-json/wp-api-menus/v2/menu-locations/main-menu')
+      .then(response => response.json())
+      .then(response => {
+        dispatchUpdateNav(response)
+      })
+      .catch(() => {
+        dispatchUpdateNav([])
       })
   }
 
@@ -65,7 +93,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     dispatchUpdatePosts: (posts) => dispatch(updatePostsAction(posts)),
     dispatchUpdatePages: (pages) => dispatch(updatePagesAction(pages)),
-    dispatchUpdateCategories: (categories) => dispatch(updateCategoriesAction(categories))
+    dispatchUpdateCategories: (categories) => dispatch(updateCategoriesAction(categories)),
+    dispatchUpdateNav: (nav) => dispatch(updateNavAction(nav))
   }
 }
 
