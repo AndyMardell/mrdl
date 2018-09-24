@@ -30,7 +30,6 @@ class App extends Component {
   }
 
   render () {
-    const homeComponent = () => <HomeContainer />
     const postComponent = ({ match }) => <PostContainer slug={match.params.postslug} />
     const pageComponent = ({ match }) => <PostContainer slug={match.params.pageslug} page />
 
@@ -39,7 +38,7 @@ class App extends Component {
         <Wrapper>
           <Header />
           <Switch>
-            <Route exact path='/' component={homeComponent} />
+            <Route exact path='/' component={HomeContainer} />
             <Route exact path='/post/:postslug' component={postComponent} />
             <Route exact path='/:pageslug' component={pageComponent} />
           </Switch>

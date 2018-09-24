@@ -4,6 +4,10 @@ export const apiGet = async (key, slug = null) => {
   const postPageSlug = slug ? '?slug=' + slug : ''
   var url = base + route + key + postPageSlug
 
+  if (key === 'media') {
+    url = base + route + key + '/' + slug
+  }
+
   if (key === 'nav') {
     url = base + '/wp-json/wp-api-menus/v2/menu-locations/main-menu/'
   }
@@ -11,7 +15,8 @@ export const apiGet = async (key, slug = null) => {
   return fetch(url)
     .then(response => response.json())
     .then(response => {
-      if (!response.length) throw response
+      if (!responseOk(key, response)) throw response
+
       return {
         'ok': true,
         'data': response
@@ -41,4 +46,16 @@ export const getCategoryDetails = (ids, categories) => {
   }
 
   return arr
+}
+
+const responseOk = (key, response) => {
+  if (key === 'media' && response) {
+    return true
+  }
+
+  if (response.length) {
+    return true
+  }
+
+  return false
 }

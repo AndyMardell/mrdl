@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,400i,500,500i|Merriweather:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,400i,500,500i|Merriweather:300,400,400i,700,700i');
 
 body {
   font-family: 'Roboto Mono', monospace;
@@ -80,7 +80,13 @@ hr {
   outline: none;
   border: 0;
   height: 1px;
-  margin: 2em 0;
+  margin: 4em 0;
+}
+
+hr.is-style-wide {
+  max-width: 150px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .post-single .first-letter {

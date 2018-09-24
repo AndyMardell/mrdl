@@ -1,4 +1,5 @@
 import React from 'react'
+import PostThumb from './PostThumb'
 import PostCategory from './PostCategory'
 import PostTitle from './PostTitle'
 import PostContent from './PostContent'
@@ -14,10 +15,15 @@ const Post = ({data, categories, single}) => {
 
   return (
     <PostWrapper className={className}>
+      {single &&
+        <PostThumb id={data.featured_media} alt={data.title.rendered} />
+      }
       <PostCategory content={categories} />
       <PostTitle content={data.title.rendered} slug={data.slug} single={single} />
       <PostContent content={content} />
-      {!single && <PostMore slug={data.slug} /> }
+      {!single &&
+        <PostMore slug={data.slug} />
+      }
     </PostWrapper>
   )
 }

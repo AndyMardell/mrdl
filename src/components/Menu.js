@@ -11,7 +11,7 @@ const Container = Styled.div`
   bottom: 0;
   left: 0;
   text-align: center;
-  background: #232323;
+  background: rgba(35, 35, 35, 0.98);
 
   a.close {
     position: absolute;
