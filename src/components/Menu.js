@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Styled from 'styled-components'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -50,18 +50,17 @@ const MenuContainer = Styled.div`
   }
 `
 
-class Menu extends Component {
-  render () {
-    library.add(faTimes)
-    return (
-      <Container>
-        <a className='close' href='#close' onClick={this.props.toggleMenu}><FontAwesomeIcon icon='times' /></a>
-        <MenuContainer>
-          { this.props.children }
-        </MenuContainer>
-      </Container>
-    )
-  }
+const Menu = ({ toggleMenu, children }) => {
+  library.add(faTimes)
+
+  return (
+    <Container>
+      <a className='close' href='#close' onClick={toggleMenu}><FontAwesomeIcon icon='times' /></a>
+      <MenuContainer>
+        {children}
+      </MenuContainer>
+    </Container>
+  )
 }
 
 export default Menu

@@ -12,11 +12,6 @@ const Container = Styled.div`
   margin-bottom: 2em;
 `
 
-// const Highlight = Styled.span`
-//   background: #232323;
-//   color: #fff;
-// `
-
 const Hero = () => (
   <Container>
     Developer from <strong>Portsmouth</strong> trying to survive

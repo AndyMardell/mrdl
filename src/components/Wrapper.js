@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Styled from 'styled-components'
 
 const Container = Styled.div`
@@ -13,14 +13,10 @@ const Container = Styled.div`
   }
 `
 
-class Wrapper extends Component {
-  render () {
-    return (
-      <Container>
-        { this.props.children }
-      </Container>
-    )
-  }
-}
+const Wrapper = ({children}) => (
+  <Container>
+    { children }
+  </Container>
+)
 
 export default Wrapper

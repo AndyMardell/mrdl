@@ -9,7 +9,7 @@ const Content = Styled.div`
     }
 `
 
-const PostContent = ({content}) => (
+const PostContent = ({ content }) => (
   <Content>
     {Parser(content)}
   </Content>

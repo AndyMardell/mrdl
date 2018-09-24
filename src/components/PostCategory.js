@@ -13,7 +13,7 @@ const Category = Styled.span`
   margin-right: 5px;
 `
 
-const PostCategory = ({content}) => {
+const PostCategory = ({ content }) => {
   const categories = content.map((category, i) =>
     <Category key={i}>{category.name}</Category>
   )

@@ -32,10 +32,15 @@ class PostThumb extends Component {
   }
 
   render () {
-    if (!this.state.image) return null
+    const { image } = this.state
+    const { alt } = this.props
+
+    if (!image) {
+      return null
+    }
 
     return (
-      <Image src={this.state.image} alt={this.props.alt} />
+      <Image src={image} alt={alt} />
     )
   }
 }

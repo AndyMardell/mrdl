@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Styled from 'styled-components'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -34,20 +34,19 @@ const TextLinks = Styled.div`
   }
 `
 
-class Footer extends Component {
-  render () {
-    library.add(faGithub, faTwitter, faInstagram)
-    return (
-      <Container>
-        <IconLink href='https://github.com/AndyMardell' target='_blank'><FontAwesomeIcon icon={['fab', 'github']} /></IconLink>
-        <IconLink href='https://twitter.com/AndyMardell' target='_blank'><FontAwesomeIcon icon={['fab', 'twitter']} /></IconLink>
-        <IconLink href='https://instagram.com/AndyMardell' target='_blank'><FontAwesomeIcon icon={['fab', 'instagram']} /></IconLink>
-        <TextLinks>
-          <Link to='/privacy'>Privacy</Link>
-        </TextLinks>
-      </Container>
-    )
-  }
+const Footer = () => {
+  library.add(faGithub, faTwitter, faInstagram)
+
+  return (
+    <Container>
+      <IconLink href='https://github.com/AndyMardell' target='_blank'><FontAwesomeIcon icon={['fab', 'github']} /></IconLink>
+      <IconLink href='https://twitter.com/AndyMardell' target='_blank'><FontAwesomeIcon icon={['fab', 'twitter']} /></IconLink>
+      <IconLink href='https://instagram.com/AndyMardell' target='_blank'><FontAwesomeIcon icon={['fab', 'instagram']} /></IconLink>
+      <TextLinks>
+        <Link to='/privacy'>Privacy</Link>
+      </TextLinks>
+    </Container>
+  )
 }
 
 export default Footer

@@ -22,7 +22,7 @@ const LinkContainer = Styled.p`
   }
 `
 
-const PostMore = ({slug}) => {
+const PostMore = ({ slug }) => {
   const url = '/post/' + slug
 
   return (

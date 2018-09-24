@@ -7,7 +7,7 @@ const Link = Styled.a`
   height: 24px;
 `
 
-const Nav = ({toggleMenu}) => (
+const Nav = ({ toggleMenu }) => (
   <Link href='#' onClick={toggleMenu}>
     <img src={burger} alt='nav' />
   </Link>

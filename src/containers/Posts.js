@@ -7,12 +7,14 @@ import { getCategoryDetails } from '../helpers'
 
 class PostsContainer extends Component {
   render () {
-    const {posts} = this.props
+    const {posts, categories} = this.props
 
-    if (!posts || !posts.length) return <Loading />
+    if (!posts || !posts.length) {
+      return <Loading />
+    }
 
     const items = posts.map((item, i) =>
-      <Post key={i} data={item} categories={getCategoryDetails(item.categories, this.props.categories)} />
+      <Post key={i} data={item} categories={getCategoryDetails(item.categories, categories)} />
     )
 
     return (

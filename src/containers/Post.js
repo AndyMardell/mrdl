@@ -5,6 +5,8 @@ import Page from '../components/Page'
 import Post from '../components/Post'
 import NotFound from '../components/NotFound'
 import { apiGet, getCategoryDetails } from '../helpers'
+import Helmet from 'react-helmet'
+import striptags from 'striptags'
 
 class PostContainer extends Component {
   constructor (props) {
@@ -45,13 +47,26 @@ class PostContainer extends Component {
 
     if (!data) return <Loading />
 
+    if (page) {
+      return (
+        <div>
+          <Helmet>
+            <title>mrdl: {data.title.rendered}</title>
+          </Helmet>
+
+          <Page data={data} />
+        </div>
+      )
+    }
+
     return (
       <div>
-        {page ? (
-          <Page data={data} />
-        ) : (
-          <Post data={data} categories={getCategoryDetails(data.categories, availableCategories)} single />
-        )}
+        <Helmet>
+          <title>mrdl: {data.title.rendered}</title>
+          <meta name='description' content={striptags(data.excerpt.rendered)} />
+        </Helmet>
+
+        <Post data={data} categories={getCategoryDetails(data.categories, availableCategories)} single />
       </div>
     )
   }

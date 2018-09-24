@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Styled from 'styled-components'
 import ReactLoading from 'react-loading'
 
@@ -23,14 +23,10 @@ const Loader = Styled(ReactLoading)`
   margin: 0 auto;
 `
 
-class Loading extends Component {
-  render () {
-    return (
-      <Container absolute={this.props.absolute}>
-        <Loader type='spin' color='#000000' height={50} width={50} />
-      </Container>
-    )
-  }
-}
+const Loading = ({ absolute }) => (
+  <Container absolute={absolute}>
+    <Loader type='spin' color='#000000' height={50} width={50} />
+  </Container>
+)
 
 export default Loading
