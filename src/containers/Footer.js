@@ -43,7 +43,7 @@ class Footer extends Component {
         <IconLink href='https://twitter.com/AndyMardell' target='_blank'><FontAwesomeIcon icon={['fab', 'twitter']} /></IconLink>
         <IconLink href='https://instagram.com/AndyMardell' target='_blank'><FontAwesomeIcon icon={['fab', 'instagram']} /></IconLink>
         <TextLinks>
-          <Link to='privacy'>Privacy</Link>
+          <Link to='/privacy'>Privacy</Link>
         </TextLinks>
       </Container>
     )
